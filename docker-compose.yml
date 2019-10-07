@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+ UserMicroservice:
+  image: teamlinked2019/UserMicroservice
+  ports:
+   - 80:3000
+  command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
+  depends_on:
+   - db
+  environment:
+   - DATABASE_URL=postgres://express-mvp-db:123.456@db:5432/UserMicroservice
+   - PORT=3000
+
+ db:
+  image: postgres
+  environment:
+   - POSTGRES_USER=express-mvp-dbuser
+   - POSTGRES_PASSWORD=123.456
+   - POSTGRES_DB=express-mvp-db
