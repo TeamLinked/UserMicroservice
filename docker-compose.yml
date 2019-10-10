@@ -1,39 +1,22 @@
-version: "2"
+version: '2'
+
 services:
-  api:
+
+  user-ms:
     build: .
-    restart: always
     ports:
-      - "5001:5001"
-    links:
-      - db
-    volumes:
-      - ./api:/api
-      - /api/node_modules
+      - "3000:3000"
     depends_on:
-      - db
-    networks:
-      - postgres
+      - user-db
+
+  user-db:
+    image: mysql:5.7.27
     environment:
-      WAIT_HOSTS: db:5432
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: 123.456
-      POSTGRES_USER: express-mvp-dbuser
-      POSTGRES_DB: express-mvp-db
-    volumes:
-      - db-data:/var/lib/postgresql/data
+      MYSQL_DATABASE: express
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: express-mvp-dbuser
+      MYSQL_PASSWORD: 123.456
+      DATABASE_HOST: user-db
     ports:
-      - "5432:5432"
-    networks:
-      - postgres
-
-networks:
-  postgres:
-    driver: bridge
-
-volumes:
-  db-data:
-    driver: local
+      - 3306:3306
+    restart: on-failure

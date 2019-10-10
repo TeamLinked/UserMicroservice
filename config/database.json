@@ -3,21 +3,25 @@
     "username": "express-mvp-dbuser",
     "password": "123.456",
     "database": "express",
-    "host": "127.0.0.1",
+    "host": "3.132.23.49",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "express-mvp-dbuser",
+    "password": "123.456",
+    "database": "express",
+    "host": "3.132.23.49",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
+    "username": "express-mvp-dbuser",
+    "password": "123.456",
+    "database": "express",
+    "host": "3.132.23.49",
+    "port": 3306,
     "dialect": "mysql"
   }
 }
