@@ -4,6 +4,15 @@ services:
 
   user-ms:
     build: .
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_HOST: user-db
+      MYSQL_PORT: 5000
+      MYSQL_DATABASE: express
+      MYSQL_USER: express-mvp-dbuser
+      MYSQL_PASSWORD: 123.456
+      WAIT_HOSTS: user-db
     ports:
       - "3000:3000"
     depends_on:
@@ -18,5 +27,5 @@ services:
       MYSQL_PASSWORD: 123.456
       DATABASE_HOST: user-db
     ports:
-      - 3306:3306
+      - 5000:3306
     restart: on-failure
